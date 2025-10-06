@@ -4,7 +4,7 @@
 */
 
 const mixString = function (str1, str2) {
-  let element1 = str1.slice(0, 1);
+  let element1 = str1.slice(0, 1); //CORREZIONE: erano i primi due, non il primo, quindi str1.slice(0, 2);
   let element2 = str2.slice(-3);
   let elementSum = `${element1}${element2}`;
   return elementSum.toUpperCase();
@@ -102,6 +102,7 @@ array5 = [];
 
 for (i = 0; i < 100; i++) {
   if (i % 2 === 0) {
+    //CORREZIONE: erano i numeri dispari da aggiungere!!!! QUINDI : (i % 2 !== 0)
     array5.push(i);
   } else {
   }
@@ -264,6 +265,7 @@ console.log('ES 11: ', filmsNames);
 
 const millenialMovies = movies.filter((film) => {
   if (film.Year >= 2000) {
+    //anche se funziona, è meglio convertire la stringa in numero con parseInt(film.Year)
     return true;
   } else {
     return false;
@@ -282,9 +284,29 @@ const totMovieYears = movies.reduce((tot, i) => {
 
 console.log('ES 13: ', totMovieYears);
 
+//COORREZIONE:
+
+const sumAllTheYears = (array) => {
+  return array.reduce((acc, curr) => acc + parseInt(curr.Year), 0);
+};
+
+console.log(sumAllTheYears(movies));
+
 /* ESERCIZIO 14 (find)
   Scrivi una funzione per ottenere dall'array fornito uno specifico film (la funzione riceve un imdbID come parametro).
 */
+
+// CORREZIONE: esaercizio non svolto
+
+const findAMovie = (id) => {
+  const result = movies.find((film) => {
+    if (film.imdbID === id) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+};
 
 /* ESERCIZIO 15 (findIndex)
   Scrivi una funzione per ottenere dall'array fornito l'indice del primo film uscito nell'anno fornito come parametro.
@@ -293,6 +315,7 @@ console.log('ES 13: ', totMovieYears);
 const movieFinderFromYear = function (film, year) {
   year = 2006;
   while (film.Year >= year) {
+    // anche qui, meglio insertire parseInt(film.Year)
     return film;
     break;
   }
